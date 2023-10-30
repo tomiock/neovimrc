@@ -508,7 +508,11 @@ local servers = {
   -- rust_analyzer = {},
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
-
+  pylsp = {
+    plugins = {
+      pylint = {enabled = true},
+    },
+  },
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
