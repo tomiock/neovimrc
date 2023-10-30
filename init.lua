@@ -150,6 +150,19 @@ require('lazy').setup({
     },
   },
 
+{
+  "nvim-neo-tree/neo-tree.nvim",
+  version = "*",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+    "MunifTanjim/nui.nvim",
+  },
+  config = function ()
+    require('neo-tree').setup {}
+  end,
+},
+
   {
     -- Theme inspired by Atom
     'navarasu/onedark.nvim',
@@ -181,6 +194,23 @@ require('lazy').setup({
     main = 'ibl',
     opts = {},
   },
+-- File: lua/custom/plugins/autopairs.lua
+
+{
+  "windwp/nvim-autopairs",
+  -- Optional dependency
+  dependencies = { 'hrsh7th/nvim-cmp' },
+  config = function()
+    require("nvim-autopairs").setup {}
+    -- If you want to automatically add `(` after selecting a function or method
+    local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+    local cmp = require('cmp')
+    cmp.event:on(
+      'confirm_done',
+      cmp_autopairs.on_confirm_done()
+    )
+  end,
+},
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
