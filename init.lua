@@ -164,6 +164,10 @@ require('lazy').setup({
 },
 
   {
+    "ThePrimeagen/harpoon"
+  },
+
+  {
     -- Theme inspired by Atom
     'navarasu/onedark.nvim',
     priority = 1000,
@@ -356,6 +360,19 @@ vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { de
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
+
+-- [[ Configure Harpoon]]
+-- See `:help harpoon` 
+require("telescope").load_extension("harpoon")
+require("harpoon").setup(
+  {
+
+  }
+)
+vim.keymap.set('n', '<leader>ha', require('harpoon.mark').add_file)
+vim.keymap.set('n', '<leader>hn', require('harpoon.ui').nav_next)
+vim.keymap.set('n', '<leader>hp', require('harpoon.ui').nav_prev)
+
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
