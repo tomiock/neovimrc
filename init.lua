@@ -168,13 +168,16 @@ require('lazy').setup({
   },
 
   {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'onedark'
-    end,
+    "mbbill/undotree"
   },
+
+  {
+  'HallerPatrick/py_lsp.nvim'
+  },
+
+  -- THEME
+  --{'navarasu/onedark.nvim', priority = 1000, config = function() vim.cmd.colorscheme 'onedark' end,},
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 };
 
   {
     -- Set lualine as statusline
@@ -267,12 +270,75 @@ require('lazy').setup({
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
+--
+-- THEMEEEE
+
+require("catppuccin").setup({
+    flavour = "mocha", -- latte, frappe, macchiato, mocha
+    background = { -- :h background
+        light = "latte",
+        dark = "mocha",
+    },
+    transparent_background = true, -- disables setting the background color.
+    show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
+    term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
+    dim_inactive = {
+        enabled = false, -- dims the background color of inactive window
+        shade = "dark",
+        percentage = 0.15, -- percentage of the shade to apply to the inactive window
+    },
+    no_italic = false, -- Force no italic
+    no_bold = false, -- Force no bold
+    no_underline = false, -- Force no underline
+    styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
+        comments = { "italic" }, -- Change the style of comments
+        conditionals = { "italic" },
+        loops = {},
+        functions = {},
+        keywords = {},
+        strings = {},
+        variables = {},
+        numbers = {},
+        booleans = {},
+        properties = {},
+        types = {},
+        operators = {},
+    },
+    color_overrides = {},
+    custom_highlights = {},
+    integrations = {
+        cmp = true,
+        gitsigns = true,
+        nvimtree = true,
+        treesitter = true,
+        notify = false,
+        mini = {
+            enabled = true,
+            indentscope_color = "",
+        },
+        -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+    },
+})
+
+-- setup must be called before loading
+vim.cmd.colorscheme "catppuccin"
 
 -- Set highlight on search
 vim.o.hlsearch = false
+vim.o.incsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
+
+-- Relative line numbers 
+vim.opt.relativenumber = true
+
+
+-- Undo tree to have access to long running undos
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/neovim/undodir"
+vim.opt.undofile = true
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
@@ -304,6 +370,16 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
+
+-- Scroll options
+vim.o.scrolloff = 8
+vim.o.signcolumn = "yes"
+
+-- Update time
+vim.o.updatetime = 50
+
+-- Color column
+vim.o.colorcolumn = "100"
 
 -- [[ Basic Keymaps ]]
 
@@ -366,12 +442,35 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 require("telescope").load_extension("harpoon")
 require("harpoon").setup(
   {
-
+    global_settings = {
+    tabline = true,
+    },
+    menu = {
+        width = vim.api.nvim_win_get_width(0) - 4,
+    }
   }
 )
-vim.keymap.set('n', '<leader>ha', require('harpoon.mark').add_file)
-vim.keymap.set('n', '<leader>hn', require('harpoon.ui').nav_next)
-vim.keymap.set('n', '<leader>hp', require('harpoon.ui').nav_prev)
+
+local mark = require('harpoon.mark')
+local ui = require('harpoon.ui')
+
+vim.keymap.set('n', '<leader>ha', mark.add_file, {desc = '[A]add file to harpoon list'})
+vim.keymap.set('n', '<leader>hr', mark.remove_empty_tail, {desc = 'dont know what it does'})
+vim.keymap.set('n', '<leader>hn', ui.nav_next, {desc = '[N]ext file in harpoon list'})
+vim.keymap.set('n', '<leader>hp', ui.nav_prev, {desc = '[P]revious file in harpoon list'})
+
+vim.keymap.set('n', '<C-h>', ui.toggle_quick_menu)
+
+vim.keymap.set('n', '<C-e>', function () ui.nav_file(1) end)
+vim.keymap.set('n', '<C-r>', function () ui.nav_file(2) end)
+vim.keymap.set('n', '<C-n>', function () ui.nav_file(3) end)
+vim.keymap.set('n', '<C-s>', function () ui.nav_file(4) end)
+
+
+-- [[ Configure undotree]]
+--
+
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, {desc = 'Open [U]ndo Tree'})
 
 
 -- [[ Configure Treesitter ]]
