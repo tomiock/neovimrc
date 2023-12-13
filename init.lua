@@ -185,6 +185,10 @@ require('lazy').setup({
   'HallerPatrick/py_lsp.nvim'
   },
 
+  {
+    "eandrju/cellular-automaton.nvim"
+  },
+
   -- THEME
   --{'navarasu/onedark.nvim', priority = 1000, config = function() vim.cmd.colorscheme 'onedark' end,},
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 };
@@ -406,6 +410,12 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous dia
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
+
+-- cellular automaton
+vim.keymap.set('n', '<leader>fmr', '<cmd>CellularAutomaton make_it_rain<CR>')
+vim.keymap.set('n', '<leader>fml', '<cmd>CellularAutomaton game_of_life<CR>')
+vim.keymap.set('n', '<leader>fms', '<cmd>CellularAutomaton scramble<CR>')
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
