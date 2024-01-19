@@ -572,12 +572,12 @@ vim.keymap.set('n', '<leader>hr', mark.remove_empty_tail, {desc = 'dont know wha
 vim.keymap.set('n', '<leader>hn', ui.nav_next, {desc = '[N]ext file in harpoon list'})
 vim.keymap.set('n', '<leader>hp', ui.nav_prev, {desc = '[P]revious file in harpoon list'})
 
-vim.keymap.set('n', '<C-h>', ui.toggle_quick_menu)
+vim.keymap.set('n', '<C-s>', ui.toggle_quick_menu)
 
-vim.keymap.set('n', '<C-e>', function () ui.nav_file(1) end)
-vim.keymap.set('n', '<C-r>', function () ui.nav_file(2) end)
-vim.keymap.set('n', '<C-n>', function () ui.nav_file(3) end)
-vim.keymap.set('n', '<C-s>', function () ui.nav_file(4) end)
+vim.keymap.set('n', '<C-h>', function () ui.nav_file(1) end)
+vim.keymap.set('n', '<C-j>', function () ui.nav_file(2) end)
+vim.keymap.set('n', '<C-k>', function () ui.nav_file(3) end)
+vim.keymap.set('n', '<C-l>', function () ui.nav_file(4) end)
 
 
 -- [[ Configure undotree]]
