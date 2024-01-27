@@ -580,6 +580,19 @@ vim.keymap.set('n', '<C-j>', function () ui.nav_file(2) end)
 vim.keymap.set('n', '<C-k>', function () ui.nav_file(3) end)
 vim.keymap.set('n', '<C-l>', function () ui.nav_file(4) end)
 
+-- keymaps with ALT
+vim.keymap.set('n', '<M-1>', function () ui.nav_file(1) end)
+vim.keymap.set('n', '<M-2>', function () ui.nav_file(2) end)
+vim.keymap.set('n', '<M-3>', function () ui.nav_file(3) end)
+vim.keymap.set('n', '<M-4>', function () ui.nav_file(4) end)
+vim.keymap.set('n', '<M-5>', function () ui.nav_file(5) end)
+vim.keymap.set('n', '<M-6>', function () ui.nav_file(6) end)
+vim.keymap.set('n', '<M-7>', function () ui.nav_file(7) end)
+vim.keymap.set('n', '<M-8>', function () ui.nav_file(8) end)
+vim.keymap.set('n', '<M-9>', function () ui.nav_file(9) end)
+vim.keymap.set('n', '<M-0>', function () ui.nav_file(10) end)
+
+
 -- [[ Configure Copilot ]]
 -- See `:help copilot`
 vim.keymap.set('n', '<leader>cp', vim.cmd.Copilot, {desc = '[C]o[P]ilot'})
