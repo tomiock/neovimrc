@@ -196,12 +196,24 @@ require('lazy').setup({
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
     "MunifTanjim/nui.nvim",
-  },
-  config = function ()
+ config = function ()
     require('neo-tree').setup {}
-  end,
+  end},
 },
-
+--  {
+--    -- Theme inspired by Atom
+--    'navarasu/onedark.nvim',
+--    priority = 1000,
+--    lazy = false,
+--    config = function()
+--      require('onedark').setup {
+--        -- Set a style preset. 'dark' is default.
+--        style = 'dark', -- dark, darker, cool, deep, warm, warmer, light
+--      }
+--      require('onedark').load()
+--    end,
+--  },
+ 
 
   {
     "ThePrimeagen/harpoon"
