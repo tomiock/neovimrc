@@ -13,7 +13,16 @@ return {
 	"tpope/vim-rhubarb",
 
 	-- which key folke
-	"folke/which-key.nvim",
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		init = function ()
+			vim.o.timeoutlen = 300
+			vim.timeout = true
+		end,
+		opts = {},
+	},
+
 
 	-- detect tabstop and shiftwidth automatically
 	"tpope/vim-sleuth",
