@@ -14,7 +14,7 @@ vim.opt.relativenumber = true
 -- undo tree to have access to long running undos
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "neovim/undodir"
+vim.opt.undodir = os.getenv("HOME") .. "/neovim/undodir"
 vim.opt.undofile = true
 -- save undo history
 vim.o.undofile = true
