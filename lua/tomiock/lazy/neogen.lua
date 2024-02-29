@@ -17,4 +17,4 @@ return {
 		vim.keymap.set(
 			'n', '<leader>nt', function() neogen.generate({ type = "type" }) end)
 	end,
-}	
+}

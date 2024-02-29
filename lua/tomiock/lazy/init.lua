@@ -7,6 +7,7 @@ return {
 	"github/copilot.vim",
 	"eandrju/cellular-automaton.nvim",
 	"gpanders/editorconfig.nvim",
+	"mbbill/undotree",
 
 	-- git plugins from tpope
 	"tpope/vim-fugitive",
@@ -34,5 +35,7 @@ return {
 		main = 'ibl',
 		opts = {},
 	},
+
+	"ThePrimeagen/vim-be-good",
 
 }
