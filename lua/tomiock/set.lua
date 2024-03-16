@@ -1,3 +1,5 @@
+vim.opt.guicursor = ''
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -18,6 +20,14 @@ vim.opt.undodir = os.getenv("HOME") .. "/neovim/undodir"
 vim.opt.undofile = true
 -- save undo history
 vim.o.undofile = true
+
+-- tabs
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+
+vim.opt.smartindent = true
 
 -- enable mouse mode
 -- 	n normal mode
@@ -53,18 +63,15 @@ vim.o.compleopt = 'menuone,noselect'
 vim.o.termguicolors = true
 
 -- scroll options
-vim.o.scrolloff = 8
+vim.o.scrolloff = 10
 vim.o.signcolumn = "yes"
+vim.opt.isfname:append("@-@")
 
 -- color column
 vim.o.colorcolumn = "100"
 
 -- enable 24.bit color on terminal
 vim.o.termguicolors = true
-
--- scroll options
-vim.o.scrolloff = 8
-vim.o.signcolumn = "yes"
 
 -- color column
 vim.o.colorcolumn = "100"

@@ -21,3 +21,7 @@ vim.keymap.set('n', '<M-CR>', vim.lsp.buf.code_action, { desc = 'Open Code Actio
 vim.keymap.set('n', '<leader>fmr', '<cmd>CellularAutomaton make_it_rain<CR>')
 vim.keymap.set('n', '<leader>fml', '<cmd>CellularAutomaton game_of_life<CR>')
 vim.keymap.set('n', '<leader>fms', '<cmd>CellularAutomaton scramble<CR>')
+
+-- page down/up
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
