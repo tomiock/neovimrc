@@ -40,7 +40,7 @@ vim.opt.smartindent = true
 vim.o.mouse = 'h'
 
 -- clipboard `:help clipboard`
-vim.o.clipboard = 'unnamedplus'
+-- vim.o.clipboard = 'unnamedplus'
 
 -- enable break indent
 vim.o.breakindent = true
