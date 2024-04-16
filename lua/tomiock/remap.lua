@@ -1,14 +1,18 @@
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
+vim.keymap.set("n", "<ESC>", "<cmd>nohlsearch<CR>")
+
 -- dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+vim.keymap.set("i", "jj", "<Esc>")
 
 -- undo tree
 vim.keymap.set('n', '<leader>u', '<cmd>UndotreeToggle<CR>')
 
 -- neo tree
-vim.keymap.set('n', '<leader>n', '<cmd>Neo<CR>', { desc = 'Open [N]eoTree'})
+vim.keymap.set('n', '<leader>n', '<cmd>Neo<CR>', { desc = 'Open [N]eoTree' })
 
 -- diagnostic
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous message' })
