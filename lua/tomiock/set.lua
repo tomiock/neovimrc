@@ -69,10 +69,3 @@ vim.opt.isfname:append("@-@")
 
 -- color column
 vim.o.colorcolumn = "100"
-
--- enable 24.bit color on terminal
-vim.o.termguicolors = true
-
--- color column
-vim.o.colorcolumn = "100"
-
