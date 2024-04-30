@@ -3,15 +3,18 @@ return {
 	build = ":TSUpdate",
 	config = function()
 		require("nvim-treesitter.configs").setup({
-			ensure_installed = { 'c', 'cpp', 'lua', 'python', 'rust', 'bash', 'json', 'html', 'css', 'yaml', 'go', 'vim', 'latex'},
+			ensure_installed = { 'c', 'cpp', 'lua', 'python', 'rust', 'bash', 'json', 'html', 'css', 'yaml', 'go', 'vim', 'latex', 'templ', 'json', 'asm' },
 
-			auto_install = false,
+			auto_install = true,
 			sync_install = false,
 			ignore_install = {},
 
 			-- modules
 			modules = {},
-			highlight = { enable = true },
+			highlight = {
+				enable = true,
+				additional_vim_regex_highlighting = false,
+			},
 			indent = { enable = true },
 			incremental_selection = {
 				enable = true,
@@ -68,5 +71,12 @@ return {
 
 
 		})
-end
+	end,
+
+	vim.filetype.add({
+		extension = {
+			templ = 'templ',
+			htmx = 'html',
+		},
+	})
 }
