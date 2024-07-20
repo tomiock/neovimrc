@@ -7,24 +7,28 @@ return {
 		config = function()
 			require("cyberdream").setup({
 
-				transparent = true,
+				--transparent = true,
 				terminal_colors = true,
-				borderless_telescope = true,
+				borderless_telescope = false,
 
 				theme = {
-					highlights = {
-						-- Highlight groups to override, adding new groups is also possible
-						-- See `:h highlight-groups` for a list of highlight groups or run `:hi` to see all groups and their current values
-
+					-- Override a highlight group entirely using the color palette
+					overrides = function(colors) -- NOTE: This function nullifies the `highlights` option
 						-- Example:
-						Comment = { fg = "#696969", bg = "NONE", italic = false },
+						return {
+							Keyword = { fg = "#ff00ff", bg = "NONE", bold = false },
+							Number = { fg = "#5ef1ff", bg = "NONE", bold = false },
+							parameter = { fg = "#ff00ff", bg = "NONE", bold = false },
 
-						-- Complete list can be found in `lua/cyberdream/theme.lua`
-					},
+							DiagnosticVirtualTextBad = { fg = "#a4ad3d", bg = "NONE", bold = false },
+							DiagnosticVirtualTextWarn = { fg = "#a4ad3d", bg = "NONE", bold = false },
+							DiagnosticVirtualTextHint = { fg = "#368e96", bg = "NONE", bold = false },
+						}
+					end,
 
 					-- Override default colors
 					colors = {
-						green = "#00ff00",
+						bg = "#000000",
 					},
 
 					-- Disable or enable colorscheme extensions
