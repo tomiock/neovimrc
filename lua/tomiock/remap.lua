@@ -29,3 +29,7 @@ vim.keymap.set('n', '<leader>fms', '<cmd>CellularAutomaton scramble<CR>')
 -- page down/up
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+
+-- stupid
+vim.api.nvim_set_keymap('n', '<leader>ss', '<cmd>Surf<cr>', { noremap = true})

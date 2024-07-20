@@ -78,5 +78,12 @@ return {
 			templ = 'templ',
 			htmx = 'html',
 		},
-	})
+	}),
+
+	vim.filetype.add({
+		name = 'mojo',
+		extension = {
+			mojo = 'python',
+		},
+	}),
 }
