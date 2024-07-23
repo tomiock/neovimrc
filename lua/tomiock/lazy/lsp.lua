@@ -28,11 +28,7 @@ return {
             ensure_installed = {
                 "lua_ls",
                 "clangd",
-                "pyright",
-                "tsserver",
-                "html",
-                "cssls",
-                "jsonls",
+                "pylsp",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
