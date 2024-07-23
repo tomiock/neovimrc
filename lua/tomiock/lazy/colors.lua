@@ -7,7 +7,7 @@ return {
 		config = function()
 			require("cyberdream").setup({
 
-				--transparent = true,
+				transparent = true,
 				terminal_colors = true,
 				borderless_telescope = false,
 
@@ -16,8 +16,10 @@ return {
 					overrides = function(colors) -- NOTE: This function nullifies the `highlights` option
 						-- Example:
 						return {
-							Keyword = { fg = "#ff00ff", bg = "NONE", bold = false },
-							Number = { fg = "#5ef1ff", bg = "NONE", bold = false },
+							Keyword = { fg = "#ff73ff", bg = "NONE", bold = false },
+							Number = { fg = "#b0d7ff", bg = "NONE", bold = false },
+							Boolean = { fg = "#b0d7ff", bg = "NONE", bold = false },
+							PreProc = { fg = "#b0d7ff", bg = "NONE", bold = false },
 							parameter = { fg = "#ff00ff", bg = "NONE", bold = false },
 
 							DiagnosticVirtualTextBad = { fg = "#a4ad3d", bg = "NONE", bold = false },
@@ -28,7 +30,7 @@ return {
 
 					-- Override default colors
 					colors = {
-						bg = "#000000",
+						green = "#61ffca",
 					},
 
 					-- Disable or enable colorscheme extensions
