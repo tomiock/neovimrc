@@ -1,8 +1,6 @@
 return {
     "neovim/nvim-lspconfig",
     dependencies = {
-        "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
@@ -22,67 +20,33 @@ return {
             vim.lsp.protocol.make_client_capabilities(),
             cmp_lsp.default_capabilities())
 
-        require("fidget").setup({})
-        require("mason").setup()
-        require("mason-lspconfig").setup({
-            ensure_installed = {
-                "lua_ls",
-                "clangd",
-                "pylsp",
-            },
-            handlers = {
-                function(server_name) -- default handler (optional)
-                    require("lspconfig")[server_name].setup {
-                        capabilities = capabilities,
-                    }
-                end,
 
-                ["lua_ls"] = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.lua_ls.setup {
-                        capabilities = capabilities,
-                        settings = {
-                            Lua = {
-                                diagnostics = {
-                                    globals = { "vim", "it", "describe", "before_each", "after_each" },
-                                }
-                            }
+        local lspconfig = require("lspconfig")
+        local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+        lspconfig.clangd.setup({ capabilities = lsp_capabilities })
+
+        lspconfig.nil_ls.setup({ capabilities = lsp_capabilities })
+
+        lspconfig.gopls.setup({ capabilities = lsp_capabilities })
+
+        lspconfig.lua_ls.setup({ capabilities = lsp_capabilities })
+
+        lspconfig.rust_analyzer.setup({ capabilities = lsp_capabilities })
+
+        lspconfig.pylsp.setup({
+            capabilities = lsp_capabilities,
+            settings = {
+                pylsp = {
+                    plugins = {
+                        pycodestyle = {
+                            maxLineLength = 100
                         }
                     }
-                end,
-
-                ["gopls"] = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.gopls.setup {
-                        capabilities = capabilities,
-                        cmd = { "gopls", "serve" },
-                        settings = {
-                            gopls = {
-                                analyses = {
-                                    unusedparams = true,
-                                },
-                                staticcheck = true,
-                            },
-                        },
-                    }
-                end,
-
-                ["clangd"] = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.clangd.setup {
-                        capabilities = capabilities,
-                        cmd = {
-                            "clangd",
-                            "--clang-tidy",
-                            "--header-insertion=iwyu",
-                            "--suggest-missing-includes",
-                            "--cross-file-rename",
-                            "--clang-tidy-checks=-*,modernize-*",
-                        },
-                    }
-                end,
+                }
             }
         })
+
 
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
@@ -102,8 +66,8 @@ return {
                 { name = 'nvim_lsp' },
                 { name = 'luasnip' }, -- For luasnip users.
             }, {
-                    { name = 'buffer' },
-                })
+                { name = 'buffer' },
+            })
         })
 
         vim.diagnostic.config({
@@ -159,4 +123,3 @@ return {
         })
     end,
 }
-

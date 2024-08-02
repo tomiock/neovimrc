@@ -24,6 +24,8 @@ return {
 		opts = {},
 	},
 
+	{ 'wakatime/vim-wakatime', lazy = false },
+
 
 	-- detect tabstop and shiftwidth automatically
 	"tpope/vim-sleuth",
