@@ -57,7 +57,7 @@ vim.o.updatetime = 250 -- ms to auto save when nothing is typed
 vim.o.timeoutlen = 300
 
 -- set completeopt to have better completion experience
-vim.o.compleopt = 'menuone,noselect'
+--vim.o.compleopt = 'menuone,noselect'
 
 -- enable 24.bit color on terminal
 vim.o.termguicolors = true
