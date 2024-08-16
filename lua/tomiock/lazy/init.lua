@@ -17,7 +17,7 @@ return {
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
-		init = function ()
+		init = function()
 			vim.o.timeoutlen = 300
 			vim.timeout = true
 		end,
@@ -25,6 +25,18 @@ return {
 	},
 
 	{ 'wakatime/vim-wakatime', lazy = false },
+
+	{
+		"NStefan002/visual-surround.nvim",
+		config = function()
+			require("visual-surround").setup({
+				vim.keymap.set("v", "s<", function()
+					-- surround selected text with "<>"
+					require("visual-surround").surround("<") -- it's enough to supply only opening or closing char
+				end)
+			})
+		end,
+	},
 
 
 	-- detect tabstop and shiftwidth automatically
