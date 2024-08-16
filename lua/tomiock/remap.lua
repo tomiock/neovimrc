@@ -30,6 +30,13 @@ vim.keymap.set('n', '<leader>fms', '<cmd>CellularAutomaton scramble<CR>')
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
+-- new plane to be opened on the right
+vim.keymap.set("n", "<C-w>s", "<C-w>s<C-w>L")
+
+vim.keymap.set("n", "<C-l>", "<C-w>l")
+vim.keymap.set("n", "<C-r>", "<C-w>r")
+vim.keymap.set("n", "<C-j>", "<C-w>j")
+vim.keymap.set("n", "<C-k>", "<C-w>k")
 
 -- stupid
-vim.api.nvim_set_keymap('n', '<leader>ss', '<cmd>Surf<cr>', { noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>fmf', '<cmd>Surf<cr>', { noremap = true})
