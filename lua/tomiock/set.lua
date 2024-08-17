@@ -1,4 +1,4 @@
-vim.opt.guicursor = ''
+vim.opt.guicursor = "i-ci-ve:hor25-blinkwait50-blinkoff50-blinkon50"
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
