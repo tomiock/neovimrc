@@ -34,18 +34,7 @@ return {
 
         lspconfig.rust_analyzer.setup({ capabilities = lsp_capabilities })
 
-        lspconfig.pylsp.setup({
-            capabilities = lsp_capabilities,
-            settings = {
-                pylsp = {
-                    plugins = {
-                        pycodestyle = {
-                            maxLineLength = 100
-                        }
-                    }
-                }
-            }
-        })
+        lspconfig.pyright.setup({ capabilities = lsp_capabilities })
 
 
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
