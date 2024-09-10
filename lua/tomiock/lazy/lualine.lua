@@ -23,7 +23,10 @@ return {
 			sections = {
 				lualine_a = { 'mode' },
 				lualine_b = { 'branch', 'diff', 'diagnostics' },
-				lualine_c = { 'filename' },
+				lualine_c = {function()
+								return require('auto-session.lib').current_session_name(true)
+							end,
+							'filename', },
 				lualine_x = { 'encoding', 'fileformat', 'filetype' },
 				lualine_y = { 'progress' },
 				lualine_z = { 'location' }
