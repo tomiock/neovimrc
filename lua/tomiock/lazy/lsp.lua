@@ -36,6 +36,21 @@ return {
 
         lspconfig.pyright.setup({ capabilities = lsp_capabilities })
 
+        lspconfig.markdown_oxide.setup({
+            capabilities = vim.tbl_deep_extend(
+                'force',
+                capabilities,
+                {
+                    workspace = {
+                        didChangeWatchedFiles = {
+                            dynamicRegistration = true,
+                        },
+                    },
+                }
+            ),
+            -- on_attach = on_attach -- configure your on attach config
+        })
+
 
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
