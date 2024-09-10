@@ -63,7 +63,7 @@ return {
 	vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recent files' })
 	vim.keymap.set('n', '<leader><space>', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 	vim.keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
-	vim.keymap.set('n', '<leader>sb', require('telescope.builtin').buffers, { desc = '[<space>] Find buffers' })
+	vim.keymap.set('n', '<leader>sb', require('telescope.builtin').buffers, { desc = '[<space>] Find [B]uffers' })
 
 	vim.keymap.set('n', '<leader>/', function()
 	require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
