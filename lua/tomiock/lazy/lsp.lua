@@ -30,7 +30,16 @@ return {
 
         lspconfig.gopls.setup({ capabilities = lsp_capabilities })
 
-        lspconfig.lua_ls.setup({ capabilities = lsp_capabilities })
+        lspconfig.lua_ls.setup({
+            capabilities = lsp_capabilities,
+            settings = {
+                Lua = {
+                    diagnostics = {
+                        globals = { "vim" }
+                    }
+                }
+            }
+        })
 
         lspconfig.rust_analyzer.setup({ capabilities = lsp_capabilities })
 
