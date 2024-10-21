@@ -8,6 +8,7 @@ return {
 	"eandrju/cellular-automaton.nvim",
 	"gpanders/editorconfig.nvim",
 	"mbbill/undotree",
+	"nvim-treesitter/nvim-treesitter-textobjects",
 
 	-- git plugins from tpope
 	"tpope/vim-fugitive",
