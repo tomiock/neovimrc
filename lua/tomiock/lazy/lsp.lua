@@ -45,6 +45,8 @@ return {
 
         lspconfig.pyright.setup({ capabilities = lsp_capabilities })
 
+        lspconfig.ruff.setup({ capabilities = lsp_capabilities })
+
         lspconfig.markdown_oxide.setup({
             capabilities = vim.tbl_deep_extend(
                 'force',

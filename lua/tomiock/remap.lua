@@ -42,3 +42,22 @@ vim.keymap.set("n", "<C-k>", "<C-w>k")
 
 -- stupid
 vim.api.nvim_set_keymap('n', '<leader>fmf', '<cmd>Surf<cr>', { noremap = true})
+
+
+--           JUKIT REMAPS
+--             -------
+-- Send the current cell to the output split
+vim.api.nvim_set_keymap('n', '<leader>x', ':call jukit#send#section(0)<CR>', { noremap = true, silent = true })
+
+-- Send the current line to the output split
+vim.api.nvim_set_keymap('n', '<c-CR>', ':call jukit#send#line()<CR>', { noremap = true, silent = true })
+
+-- Send visually selected code to the output split
+vim.api.nvim_set_keymap('v', '<c-CR>', ':<C-U>call jukit#send#selection()<CR>', { noremap = true, silent = true })
+
+-- Execute all cells until the current cell
+vim.api.nvim_set_keymap('n', '<leader>cc', ':call jukit#send#until_current_section()<CR>', { noremap = true, silent = true })
+
+-- Execute all cells
+vim.api.nvim_set_keymap('n', '<leader>all', ':call jukit#send#all()<CR>', { noremap = true, silent = true })
+
