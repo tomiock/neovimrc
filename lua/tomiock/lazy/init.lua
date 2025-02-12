@@ -83,4 +83,18 @@ return {
 		dir = '~/dev/jukit/vim-jukit/',
 	},
 
+	{
+		"geg2102/nvim-python-repl",
+		dependencies = "nvim-treesitter",
+		ft = { "python"},
+		config = function()
+			require("nvim-python-repl").setup({
+				execute_on_send = true,
+				vsplit = true,
+				spawn_command = {
+					python = "ipython",
+				}
+			})
+		end
+	}
 }

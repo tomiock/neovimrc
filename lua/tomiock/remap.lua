@@ -10,6 +10,8 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 
 vim.keymap.set("i", "jj", "<Esc>")
 
+vim.keymap.set("n", "<M-\\>", "<C-\\><c-N>")
+
 -- undo tree
 vim.keymap.set('n', '<leader>u', '<cmd>UndotreeToggle<CR>')
 
@@ -35,11 +37,6 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 -- new plane to be opened on the right
 vim.keymap.set("n", "<C-w>s", "<C-w>s<C-w>L")
 
-vim.keymap.set("n", "<C-l>", "<C-w>l")
---vim.keymap.set("n", "<C-r>", "<C-w>r")
-vim.keymap.set("n", "<C-j>", "<C-w>j")
-vim.keymap.set("n", "<C-k>", "<C-w>k")
-
 -- stupid
 vim.api.nvim_set_keymap('n', '<leader>fmf', '<cmd>Surf<cr>', { noremap = true})
 
@@ -61,3 +58,16 @@ vim.api.nvim_set_keymap('n', '<leader>cc', ':call jukit#send#until_current_secti
 -- Execute all cells
 vim.api.nvim_set_keymap('n', '<leader>all', ':call jukit#send#all()<CR>', { noremap = true, silent = true })
 
+-- * Nvim Pane Navigation: Ctrl + up/down/right/left
+vim.keymap.set("n", "<M-h>", "<C-w>h")     -- h - Navigate Right
+vim.keymap.set("n", "<M-j>", "<C-w>j")     -- j - Navigate Down
+vim.keymap.set("n", "<M-k>", "<C-w>k")       -- k - Navigate Up
+vim.keymap.set("n", "<M-l>", "<C-w>l")    -- l - Navigate Left
+
+-- python repl
+vim.keymap.set("n", "<leader>p", function() require('nvim-python-repl').send_statement_definition() end, { desc = "Send semantic unit to REPL"})
+vim.keymap.set("v", "<leader>pv", function() require('nvim-python-repl').send_visual_to_repl() end, { desc = "Send visual selection to REPL"})
+vim.keymap.set("n", "<leader>pa", function() require('nvim-python-repl').send_buffer_to_repl() end, { desc = "Send entire buffer to REPL"})
+vim.keymap.set("n", "<leader>pe", function() require('nvim-python-repl').toggle_execute() end, { desc = "Automatically execute command in REPL after sent"})
+--vim.keymap.set("n", [your keymap], function() require('nvim-python-repl').toggle_vertical() end, { desc = "Create REPL in vertical or horizontal split"})
+vim.keymap.set("n", "<c-P>", function() require('nvim-python-repl').open_repl() end, { desc = "Opens the REPL in a window split"})
