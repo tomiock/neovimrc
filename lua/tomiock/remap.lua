@@ -71,3 +71,4 @@ vim.keymap.set("n", "<leader>pa", function() require('nvim-python-repl').send_bu
 vim.keymap.set("n", "<leader>pe", function() require('nvim-python-repl').toggle_execute() end, { desc = "Automatically execute command in REPL after sent"})
 --vim.keymap.set("n", [your keymap], function() require('nvim-python-repl').toggle_vertical() end, { desc = "Create REPL in vertical or horizontal split"})
 vim.keymap.set("n", "<c-P>", function() require('nvim-python-repl').open_repl() end, { desc = "Opens the REPL in a window split"})
+vim.keymap.set("n", "<leader>pc", function() require('nvim-python-repl').send_current_cell_to_repl() end, { desc = "Sends the cell under cursor to repl"})
