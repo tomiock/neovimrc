@@ -41,6 +41,7 @@ vim.keymap.set("n", "<C-w>s", "<C-w>s<C-w>L")
 vim.api.nvim_set_keymap('n', '<leader>fmf', '<cmd>Surf<cr>', { noremap = true})
 
 
+--[[
 --           JUKIT REMAPS
 --             -------
 -- Send the current cell to the output split
@@ -57,6 +58,7 @@ vim.api.nvim_set_keymap('n', '<leader>cc', ':call jukit#send#until_current_secti
 
 -- Execute all cells
 vim.api.nvim_set_keymap('n', '<leader>all', ':call jukit#send#all()<CR>', { noremap = true, silent = true })
+--]]
 
 -- * Nvim Pane Navigation: Ctrl + up/down/right/left
 vim.keymap.set("n", "<M-h>", "<C-w>h")     -- h - Navigate Right
@@ -65,10 +67,22 @@ vim.keymap.set("n", "<M-k>", "<C-w>k")       -- k - Navigate Up
 vim.keymap.set("n", "<M-l>", "<C-w>l")    -- l - Navigate Left
 
 -- python repl
-vim.keymap.set("n", "<leader>p", function() require('nvim-python-repl').send_statement_definition() end, { desc = "Send semantic unit to REPL"})
-vim.keymap.set("v", "<leader>pv", function() require('nvim-python-repl').send_visual_to_repl() end, { desc = "Send visual selection to REPL"})
+vim.keymap.set("n", "<c-P>", function() require('nvim-python-repl').open_repl() end, { desc = "Opens the REPL in a window split"})
+vim.keymap.set("n", "<leader>x", function() require('nvim-python-repl').send_statement_definition() end, { desc = "Send semantic unit to REPL"})
+vim.keymap.set("v", "<leader>x", function() require('nvim-python-repl').send_visual_to_repl() end, { desc = "Send visual selection to REPL"})
 vim.keymap.set("n", "<leader>pa", function() require('nvim-python-repl').send_buffer_to_repl() end, { desc = "Send entire buffer to REPL"})
 vim.keymap.set("n", "<leader>pe", function() require('nvim-python-repl').toggle_execute() end, { desc = "Automatically execute command in REPL after sent"})
---vim.keymap.set("n", [your keymap], function() require('nvim-python-repl').toggle_vertical() end, { desc = "Create REPL in vertical or horizontal split"})
-vim.keymap.set("n", "<c-P>", function() require('nvim-python-repl').open_repl() end, { desc = "Opens the REPL in a window split"})
 vim.keymap.set("n", "<leader>pc", function() require('nvim-python-repl').send_current_cell_to_repl() end, { desc = "Sends the cell under cursor to repl"})
+
+-- Add cells
+vim.keymap.set("n", "<leader>jo", "<cmd>JupyterAddCellBelow<CR>", { desc = "Add Jupyter cell below" })
+vim.keymap.set("n", "<leader>jO", "<cmd>JupyterAddCellAbove<CR>", { desc = "Add Jupyter cell above" })
+
+-- Cell operations
+vim.keymap.set("n", "<leader>jd", "<cmd>JupyterRemoveCell<CR>", { desc = "Remove current Jupyter cell" })
+vim.keymap.set("n", "<leader>jm", "<cmd>JupyterMergeCellAbove<CR>", { desc = "Merge with cell above" })
+vim.keymap.set("n", "<leader>jM", "<cmd>JupyterMergeCellBelow<CR>", { desc = "Merge with cell below" })
+vim.keymap.set("n", "<leader>jt", "<cmd>JupyterConvertCellType<CR>", { desc = "Convert cell type (code/markdown)" })
+vim.keymap.set("v", "<leader>jm", "<cmd>JupyterMergeVisual<CR>", { desc = "Merge selected cells" })
+vim.keymap.set("n", "<leader>jD", "<cmd>JupyterDeleteCell<CR>", { desc = "Delete cell under cursor and store in register" })
+

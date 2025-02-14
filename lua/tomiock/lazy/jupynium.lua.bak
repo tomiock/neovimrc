@@ -1,4 +1,3 @@
---[[
 return {
 "kiyoon/jupynium.nvim",
 build = "conda run --no-capture-output -n jupynium pip install .",
@@ -72,4 +71,3 @@ config = function()
 end,
 
 }
---]]
