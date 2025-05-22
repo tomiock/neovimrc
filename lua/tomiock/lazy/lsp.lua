@@ -73,8 +73,8 @@ return {
                 end,
             },
             mapping = cmp.mapping.preset.insert({
-                ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-                ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+                ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
+                ['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
                 ['<C-y>'] = cmp.mapping.confirm({ select = true }),
                 ["<C-Space>"] = cmp.mapping.complete(),
             }),
@@ -132,7 +132,7 @@ return {
                 end, '[W]orkspace [L]ist Folders')
 
                 -- Create a command `:Format` local to the LSP buffer
-                vim.api.nvim_buf_create_user_command(event.buf, 'Format', function(_)
+                vim.api.nvim_buf_create_user_command(event.buf, 'Fmt', function(_)
                     vim.lsp.buf.format()
                 end, { desc = 'Format current buffer with LSP' })
             end,

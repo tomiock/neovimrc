@@ -40,26 +40,6 @@ vim.keymap.set("n", "<C-w>s", "<C-w>s<C-w>L")
 -- stupid
 vim.api.nvim_set_keymap('n', '<leader>fmf', '<cmd>Surf<cr>', { noremap = true})
 
-
---[[
---           JUKIT REMAPS
---             -------
--- Send the current cell to the output split
-vim.api.nvim_set_keymap('n', '<leader>x', ':call jukit#send#section(0)<CR>', { noremap = true, silent = true })
-
--- Send the current line to the output split
-vim.api.nvim_set_keymap('n', '<c-CR>', ':call jukit#send#line()<CR>', { noremap = true, silent = true })
-
--- Send visually selected code to the output split
-vim.api.nvim_set_keymap('v', '<c-CR>', ':<C-U>call jukit#send#selection()<CR>', { noremap = true, silent = true })
-
--- Execute all cells until the current cell
-vim.api.nvim_set_keymap('n', '<leader>cc', ':call jukit#send#until_current_section()<CR>', { noremap = true, silent = true })
-
--- Execute all cells
-vim.api.nvim_set_keymap('n', '<leader>all', ':call jukit#send#all()<CR>', { noremap = true, silent = true })
---]]
-
 -- * Nvim Pane Navigation: Ctrl + up/down/right/left
 vim.keymap.set("n", "<M-h>", "<C-w>h")     -- h - Navigate Right
 vim.keymap.set("n", "<M-j>", "<C-w>j")     -- j - Navigate Down
@@ -86,3 +66,23 @@ vim.keymap.set("n", "<leader>jt", "<cmd>JupyterConvertCellType<CR>", { desc = "C
 vim.keymap.set("v", "<leader>jm", "<cmd>JupyterMergeVisual<CR>", { desc = "Merge selected cells" })
 vim.keymap.set("n", "<leader>jD", "<cmd>JupyterDeleteCell<CR>", { desc = "Delete cell under cursor and store in register" })
 
+local hardmode = false
+if hardmode then
+    -- Show an error message if a disabled key is pressed
+    local msg = [[<cmd>echohl Error | echo "KEY DISABLED" | echohl None<CR>]]
+
+    -- Disable arrow keys in insert mode with a styled message
+    vim.api.nvim_set_keymap('i', '<Up>', '<C-o>' .. msg, { noremap = true, silent = false })
+    vim.api.nvim_set_keymap('i', '<Down>', '<C-o>' .. msg, { noremap = true, silent = false })
+    vim.api.nvim_set_keymap('i', '<Left>', '<C-o>' .. msg, { noremap = true, silent = false })
+    vim.api.nvim_set_keymap('i', '<Right>', '<C-o>' .. msg, { noremap = true, silent = false })
+    vim.api.nvim_set_keymap('i', '<Del>', '<C-o>' .. msg, { noremap = true, silent = false })
+    vim.api.nvim_set_keymap('i', '<BS>', '<C-o>' .. msg, { noremap = true, silent = false })
+
+    -- Disable arrow keys in normal mode with a styled message
+    vim.api.nvim_set_keymap('n', '<Up>', msg, { noremap = true, silent = false })
+    vim.api.nvim_set_keymap('n', '<Down>', msg, { noremap = true, silent = false })
+    vim.api.nvim_set_keymap('n', '<Left>', msg, { noremap = true, silent = false })
+    vim.api.nvim_set_keymap('n', '<Right>', msg, { noremap = true, silent = false })
+    vim.api.nvim_set_keymap('n', '<BS>', msg, { noremap = true, silent = false })
+end

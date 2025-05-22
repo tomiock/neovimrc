@@ -19,9 +19,9 @@ return {
 			incremental_selection = {
 				enable = true,
 				keymaps = {
-					init_selection = '<c-space>',
+					--init_selection = '<c-v>',
 					node_incremental = '<c-space>',
-					scope_incremental = '<c-s>',
+					scope_incremental = '<c-i>',
 					node_decremental = '<M-space>',
 				},
 			},
@@ -40,7 +40,7 @@ return {
 					selection_modes = {
 						['@parameter.outer'] = 'v',
 						['@function.outer'] = 'V',
-						['@class.outer'] = '<c-v>',
+						['@class.outer'] = 'V',
 					},
 				},
 				move = {
