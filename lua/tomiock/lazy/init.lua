@@ -1,8 +1,10 @@
 return {
+	--[[
 	{
 		"nvim-lua/plenary.nvim",
 		name = "plenary"
 	},
+	--]]
 
 	"github/copilot.vim",
 	"eandrju/cellular-automaton.nvim",
@@ -83,7 +85,6 @@ return {
 		'vim-jukit',
 		dir = '~/dev/jukit/vim-jukit/',
 	},
-	--]]
 
 	{
 		"geg2102/nvim-python-repl",
@@ -135,4 +136,5 @@ return {
 			})
 		end
 	}
+	--]]
 }
