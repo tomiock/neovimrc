@@ -29,6 +29,8 @@ return {
 
 				-- Override default colors
 				colors = {
+
+					fg = "#eaeaea",
 					green = "#61ffca",
 				},
 

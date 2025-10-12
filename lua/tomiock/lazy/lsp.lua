@@ -22,16 +22,17 @@ return {
             cmp_lsp.default_capabilities())
 
 
-        local lspconfig = require("lspconfig")
-        local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
+        require("mason-lspconfig").setup_handlers {
+            function(server_name) -- default handler (optional)
+                require("lspconfig")[server_name].setup {
+                    capabilities = capabilities,
+                }
+            end,
 
-        lspconfig.clangd.setup({ capabilities = lsp_capabilities })
+            ["lua_ls"] = function() end,
+        }
 
-        lspconfig.nil_ls.setup({ capabilities = lsp_capabilities })
-
-        lspconfig.gopls.setup({ capabilities = lsp_capabilities })
-
-        lspconfig.lua_ls.setup({
+        vim.lsp.config('lua_ls', {
             capabilities = lsp_capabilities,
             settings = {
                 Lua = {
@@ -41,14 +42,9 @@ return {
                 }
             }
         })
+        vim.lsp.enable('lua_ls')
 
-        lspconfig.rust_analyzer.setup({ capabilities = lsp_capabilities })
-
-        lspconfig.pyright.setup({ capabilities = lsp_capabilities })
-
-        lspconfig.ruff.setup({ capabilities = lsp_capabilities })
-
-        lspconfig.markdown_oxide.setup({
+        vim.lsp.config('markdown_oxide', {
             capabilities = vim.tbl_deep_extend(
                 'force',
                 capabilities,
@@ -62,6 +58,7 @@ return {
             ),
             -- on_attach = on_attach -- configure your on attach config
         })
+        vim.lsp.enable('markdown_oxide')
 
 
         local cmp_select = { behavior = cmp.SelectBehavior.Select }

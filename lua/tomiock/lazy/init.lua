@@ -4,7 +4,6 @@ return {
 		name = "plenary"
 	},
 
-	"github/copilot.vim",
 	"eandrju/cellular-automaton.nvim",
 	"gpanders/editorconfig.nvim",
 	"mbbill/undotree",
@@ -39,6 +38,20 @@ return {
 		end,
 	},
 
+	{
+		"williamboman/mason.nvim",
+		config = function()
+			require("mason").setup()
+		end,
+	},
+	{
+		"williamboman/mason-lspconfig.nvim",
+		config = function()
+			require("mason-lspconfig").setup({
+				ensure_installed = { "lua_ls", "ty" },
+			})
+		end,
+	},
 
 	-- detect tabstop and shiftwidth automatically
 	"tpope/vim-sleuth",
